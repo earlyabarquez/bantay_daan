@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
+import icon from '../assets/images/icon.png';
 
 export default function LoginPage() {
   const [email, setEmail]             = useState('');
@@ -22,7 +23,6 @@ export default function LoginPage() {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
 
-      // Check admin role in Firestore
       const userDoc = await getDoc(doc(db, 'users', cred.user.uid));
       const role = userDoc.data()?.role;
 
@@ -65,7 +65,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
           <div className="w-16 h-16 rounded-2xl bg-amber/10 border border-amber/30 flex items-center justify-center mb-4 shadow-lg shadow-amber/5">
-            <span className="text-3xl">🛡</span>
+            <img src={icon} alt="Bantay Daan" className="w-10 h-10 object-contain" />
           </div>
           <h1 className="text-2xl font-bold text-white tracking-tight">Bantay Daan</h1>
           <p className="text-xs text-amber/70 tracking-[0.2em] uppercase font-mono mt-1">

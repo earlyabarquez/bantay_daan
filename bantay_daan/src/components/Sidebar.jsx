@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
+import icon from '../assets/images/icon.png';
 
 const NAV_ITEMS = [
   {
@@ -48,7 +49,7 @@ export default function Sidebar({ active }) {
       <div className="px-5 py-6 border-b border-navy-elevated">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-amber/10 border border-amber/30 flex items-center justify-center flex-shrink-0">
-            <span className="text-amber text-sm">🛡</span>
+            <img src={icon} alt="Bantay Daan" className="w-6 h-6 object-contain" />
           </div>
           <div>
             <p className="text-sm font-bold text-white leading-tight">Bantay Daan</p>
